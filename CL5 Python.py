@@ -8,12 +8,7 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 s.connect((host,port))
 
-
 s.sendall("set MIXER:Current/InCh/Fader/On 0 0 0\n".encode())
-
-s.sendall("set MIXER:Current/InCh/Fader/On 1 0 0\n".encode())
-
-s.sendall("set MIXER:Current/InCh/Fader/Level 2 0 0\n".encode())
 
 s.sendall("set MIXER:Current/InCh/Fader/Level 3 0 0\n".encode())
 
