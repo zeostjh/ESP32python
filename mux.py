@@ -5,7 +5,7 @@ import machine
 import socket
 import Pin
 
-host ="10.8.1.195"#host
+host ="10.8.1.95"#host
 port =49280
 Gled=Pin(14,Pin.OUT)
 Rled=Pin(15,Pin.OUT)
