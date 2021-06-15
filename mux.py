@@ -12,6 +12,7 @@ sensor = HCSR04(trigger_pin=16, echo_pin=0)
 while True:
   distance = sensor.distance_cm()
   if distance <= 30:
+    print('IN DISTANCE:', distance, 'cm')
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.connect((host,port))
     s.sendall("set MIXER:Current/InCh/Fader/On 0 0 0\n".encode())
@@ -19,7 +20,7 @@ while True:
     s.recv(1500)
     s.close ()
     else:
-      print(
+      print('OUT DISTANCE:', distance, 'cm')
       
 
 
