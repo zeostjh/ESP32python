@@ -19,7 +19,7 @@ while True:
     rled.value(0)
     gled.value(1)
     bled.value(0)
-    esp32_001.sendall("set MIXER:Current/InCh/Fader/On 0 0 1\n".encode())
+    esp32_001.sendall("set MIXER:Current/InCh/Fader/On 0 0 0\n".encode())
     esp32_001.sendall("set MIXER:Current/InCh/Fader/Level 0 0 -1000\n".encode())
     esp32_001.recv(1500)
     esp32_001.close ()
