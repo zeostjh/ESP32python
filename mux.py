@@ -19,57 +19,46 @@ esp32_001.connect((host,port))https://github.com/zeostjh/ESP32python/blob/main/m
 while True:
   distance = sensor.distance_cm()
   if distance <= 20:
-    for R_dutyCycle in range(0, 1024):
-      Rled.duty(R_dutyCycle)
-      print(R_dutyCycle)
     esp32_001.sendall("set MIXER:Current/InCh/Fader/On 0 0 0\n".encode())
     esp32_001.sendall("set MIXER:Current/InCh/Fader/Level 0 0 500\n".encode())
     esp32_001.recv(1500)
     esp32_001.close ()
     print("Sent")
+    for R_dutyCycle in range(0, 1024):
+      Rled.duty(R_dutyCycle)
+      print(R_dutyCycle)
     elif distance <= 40:
+      esp32_001.sendall("set MIXER:Current/InCh/Fader/On 0 0 0\n".encode())
+      esp32_001.sendall("set MIXER:Current/InCh/Fader/Level 0 0 0\n".encode())
+      esp32_001.recv(1500)
+      esp32_001.close ()
+      print("Sent")
       for G_dutyCycle in range(0, 1024):
         Rled.duty(G_dutyCycle)
         print(G_dutyCycle)
-    esp32_001.sendall("set MIXER:Current/InCh/Fader/On 0 0 0\n".encode())
-    esp32_001.sendall("set MIXER:Current/InCh/Fader/Level 0 0 0\n".encode())
-    esp32_001.recv(1500)
-    esp32_001.close ()
-    print("Sent")
-    elif distance <= 60:
-      for B_dutyCycle in range(0, 1024):
-        Rled.duty(B_dutyCycle)
-        print(B_dutyCycle)
-    esp32_001.sendall("set MIXER:Current/InCh/Fader/On 0 0 0\n".encode())
-    esp32_001.sendall("set MIXER:Current/InCh/Fader/Level 0 0 -2000\n".encode())
-    esp32_001.recv(1500)
-    esp32_001.close ()
-    print("Sent")
-    time.sleep(0.5)
+      elif distance <= 60:
+        esp32_001.sendall("set MIXER:Current/InCh/Fader/On 0 0 0\n".encode())
+        esp32_001.sendall("set MIXER:Current/InCh/Fader/Level 0 0 -2000\n".encode())
+        esp32_001.recv(1500)
+        esp32_001.close ()
+        print("Sent")
+        for B_dutyCycle in range(0, 1024):
+          Rled.duty(B_dutyCycle)
+          print(B_dutyCycle)
+        time.sleep(0.5)
       
+
       
-    
-    
-    
-    
-    
-    
-      
-   for R_dutyCycle in range(0, 1024):
-   for G_dutyCycle in range(0, 1024):
-   for B_dutyCycle in range(0, 1024):
-   for O_dutyCycle in range(0, 1024):
-    
-    Rled.duty(R_dutyCycle)
-    Gled.duty(G_dutyCycle)
-    Bled.duty(B_dutyCycle)
-    Oled.duty(O_dutyCycle)
-    
-    
-    print(R_dutyCycle)
-    print(G_dutyCycle)
-    print(B_dutyCycle)
-    print(O_dutyCycle)
-    
-    
-    sleep(0.1)
+#for R_dutyCycle in range(0, 1024):
+#for G_dutyCycle in range(0, 1024):
+#for B_dutyCycle in range(0, 1024):
+#for O_dutyCycle in range(0, 1024): 
+#Rled.duty(R_dutyCycle)
+#Gled.duty(G_dutyCycle)
+#Bled.duty(B_dutyCycle)
+#Oled.duty(O_dutyCycle)
+#print(R_dutyCycle)
+#print(G_dutyCycle)
+#print(B_dutyCycle)
+#print(O_dutyCycle)
+  
