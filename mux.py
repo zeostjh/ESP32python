@@ -40,7 +40,7 @@ while True:
       print("Sent")
       time.sleep(0.5)
       for G_dutyCycle in range(0, 1024):
-        Rled.duty(G_dutyCycle)
+        Gled.duty(G_dutyCycle)
         print(G_dutyCycle)
       elif distance <= 60:
         sendOSCMsg("NEAR NEAR", [444])
@@ -51,7 +51,7 @@ while True:
         print("Sent")
         time.sleep(0.5)
         for B_dutyCycle in range(0, 1024):
-          Rled.duty(B_dutyCycle)
+          Bled.duty(B_dutyCycle)
           print(B_dutyCycle)
         time.sleep(0.5)
         elif distance <= 200        
@@ -63,7 +63,7 @@ while True:
           print("Sent")
           time.sleep(0.5)
           for ALL_dutyCycle in range(0, 1024):
-            Rled.duty(ALL_dutyCycle)
+            ALLled.duty(ALL_dutyCycle)
             print(ALL_dutyCycle)
             time.sleep(0.5)
  closeOSC()     
