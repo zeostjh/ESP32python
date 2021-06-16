@@ -10,10 +10,11 @@ import Pin
 initOSCClient()
 host ="10.8.1.95"#host
 port =49280
-Rled=PWM(Pin(4), 5000)
+Rled=PWM(Pin(4,), 5000)
 Gled=PWM(Pin(5), 5000)
 Bled=PWM(Pin(15), 5000)
 Oled=PWM(Pin(2), 5000)
+ALLled=PWM(Pin(4, 5, 15), 5000)
 sensor = HCSR04(trigger_pin=12, echo_pin=13)
 esp32_001 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 esp32_001.connect((host,port))https://github.com/zeostjh/ESP32python/blob/main/mux.py
@@ -53,6 +54,22 @@ while True:
           Rled.duty(B_dutyCycle)
           print(B_dutyCycle)
         time.sleep(0.5)
+        elif distance <= 200        
+          sendOSCMsg("/1111111", [444])
+          esp32_001.sendall("set MIXER:Current/InCh/Fader/On 0 0 0\n".encode())
+          esp32_001.sendall("set MIXER:Current/InCh/Fader/Level 0 0 -2000\n".encode())
+          esp32_001.recv(1500)
+          esp32_001.close ()
+          print("Sent")
+          time.sleep(0.5)
+          for O_dutyCycle in range(0, 1024):
+            Rled.duty(O_dutyCycle)
+            print(O_dutyCycle)
+            time.sleep(0.5)
+          for ALL_dutyCycle in range(0, 1024):
+            Rled.duty(ALL_dutyCycle)
+            print(ALL_dutyCycle)
+            time.sleep(0.5)
  closeOSC()     
 
       
