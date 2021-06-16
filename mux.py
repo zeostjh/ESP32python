@@ -7,8 +7,9 @@ import Pin
 
 host ="10.8.1.95"#host
 port =49280
-Gled=Pin(14,Pin.OUT)
-Rled=Pin(15,Pin.OUT)
+rled=Pin(4,Pin.OUT)
+gled=Pin(5,Pin.OUT)
+bled=Pin(15,Pin.OUT)
 sensor = HCSR04(trigger_pin=12, echo_pin=13)
 
 while True:
