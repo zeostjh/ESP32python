@@ -21,7 +21,7 @@ esp32_001.connect((host,port))https://github.com/zeostjh/ESP32python/blob/main/m
 while True:
   distance = sensor.distance_cm()
   if distance <= 20:
-    sendOSCMsg("/3333333", [444])
+    sendOSCMsg("/BACK BACK", [444])
     esp32_001.sendall("set MIXER:Current/InCh/Fader/On 0 0 0\n".encode())
     esp32_001.sendall("set MIXER:Current/InCh/Fader/Level 0 0 500\n".encode())
     esp32_001.recv(1500)
@@ -32,7 +32,7 @@ while True:
       Rled.duty(R_dutyCycle)
       print(R_dutyCycle)
     elif distance <= 40:
-      sendOSCMsg("/2222222", [444])
+      sendOSCMsg("STOP STOP", [444])
       esp32_001.sendall("set MIXER:Current/InCh/Fader/On 0 0 0\n".encode())
       esp32_001.sendall("set MIXER:Current/InCh/Fader/Level 0 0 0\n".encode())
       esp32_001.recv(1500)
@@ -43,7 +43,7 @@ while True:
         Rled.duty(G_dutyCycle)
         print(G_dutyCycle)
       elif distance <= 60:
-        sendOSCMsg("/1111111", [444])
+        sendOSCMsg("NEAR NEAR", [444])
         esp32_001.sendall("set MIXER:Current/InCh/Fader/On 0 0 0\n".encode())
         esp32_001.sendall("set MIXER:Current/InCh/Fader/Level 0 0 -2000\n".encode())
         esp32_001.recv(1500)
@@ -55,17 +55,13 @@ while True:
           print(B_dutyCycle)
         time.sleep(0.5)
         elif distance <= 200        
-          sendOSCMsg("/1111111", [444])
+          sendOSCMsg("FAR FAR", [444])
           esp32_001.sendall("set MIXER:Current/InCh/Fader/On 0 0 0\n".encode())
           esp32_001.sendall("set MIXER:Current/InCh/Fader/Level 0 0 -2000\n".encode())
           esp32_001.recv(1500)
           esp32_001.close ()
           print("Sent")
           time.sleep(0.5)
-          for O_dutyCycle in range(0, 1024):
-            Rled.duty(O_dutyCycle)
-            print(O_dutyCycle)
-            time.sleep(0.5)
           for ALL_dutyCycle in range(0, 1024):
             Rled.duty(ALL_dutyCycle)
             print(ALL_dutyCycle)
