@@ -10,9 +10,10 @@ port =49280
 rled=Pin(4,Pin.OUT)
 gled=Pin(5,Pin.OUT)
 bled=Pin(15,Pin.OUT)
+OBled=Pin(2,Pin.OUT)
 sensor = HCSR04(trigger_pin=12, echo_pin=13)
 esp32_001 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-esp32_001.connect((host,port))
+esp32_001.connect((host,port))https://github.com/zeostjh/ESP32python/blob/main/mux.py
 while True:
   distance = sensor.distance_cm()
   if distance <= 30:
